@@ -3,10 +3,10 @@ from . import views
 
 
 
+
 urlpatterns = [
     path('', views.index, name='index'),
    
-    path('markattendance/', views.markattendance, name='markattend')
     # path('student/<slug:stud_id>/attendance/', views.attendance, name='attendance'),
     # path('student/<slug:stud_id>/<slug:course_id>/attendance/', views.attendance_detail, name='attendance_detail'),
     # path('student/<slug:class_id>/timetable/', views.timetable, name='timetable'),

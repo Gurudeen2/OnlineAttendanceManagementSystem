@@ -19,9 +19,6 @@ def index(request):
         return render(request, 'info/homepage.html')
     return render(request, 'info/logout.html')
 
-def markattendance(request):
-    return render(request, "info/markattendance.html")
-
 
 # @login_required()
 # def attendance(request, stud_id):
