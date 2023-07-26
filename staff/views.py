@@ -21,5 +21,5 @@ def Staff(request):
                                                 level=level, email=email, phone=phone)
             staff.save()
             messages.success(request, 'Staff Added Successfully')
-            return redirect(request, 'staff')
+            return redirect('staff')
     return render(request, 'info/addstaff.html')
