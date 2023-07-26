@@ -73,6 +73,8 @@
       <h3>Mark Attendance</h3>
       <!-- Page Features -->
       <div class="row py-4">
+        {% include 'info/partials/_alert.html' %}
+
         <div class="col-lg-6 col-md-6 mb-4">
           <form method="post">
             {% csrf_token %}
@@ -87,8 +89,18 @@
               />
             </div>
             <div class="text-right">
-              <input type="submit" name="signin" value="Sign in" class="btn btn-success" />
-              <input type="submit" name="signout" value="Sign out" class="btn btn-danger" />
+              <input
+                type="submit"
+                name="signin"
+                value="Sign in"
+                class="btn btn-success"
+              />
+              <input
+                type="submit"
+                name="signout"
+                value="Sign out"
+                class="btn btn-danger"
+              />
             </div>
           </form>
         </div>
