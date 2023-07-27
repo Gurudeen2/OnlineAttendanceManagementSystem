@@ -73,11 +73,25 @@
       <!-- Jumbotron Header -->
       <h3>Attendance List</h3>
       <!-- Page Features -->
-      <form method="post"></form>
+      {% csrf_token %}
       <div class="row">
-        {% csrf_token %}
+        <div class="col">
+          <form class="form-inline">
+            <div class="form-group mx-sm-1 mb-2">
+              <input
+                type="text"
+                class="form-control"
+                name="search"
+                placeholder="Search"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Search</button>
+          </form>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-lg-12 col-md-12 mb-4">
-          <table class="table table-hover">
+          <table class="table table-hover table-responsive">
             <thead class="table-info">
               <tr>
                 <th scope="col">Staff ID</th>
