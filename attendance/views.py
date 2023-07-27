@@ -17,7 +17,7 @@ def MarkAttendance(request):
         staff = Staff.objects.get(pk=staffid)
         if request.POST.get('signin'):
             #staffid n date to filter
-            if not models.MarkAttendance.objects.filter(staffid=staff).exists() and models.MarkAttendance.objects.filter(staffid=staff).exists() :
+            if not models.MarkAttendance.objects.filter(staffid=staff).filter(date_signin=date_signin).exists():
                 status="Present"
                 attendance = models.MarkAttendance.objects.create(staffid=staff, status=status, date_signin=date_signin,
                                                               time_signin=time_signin,  attendance_day=attendance_day)
@@ -29,11 +29,26 @@ def MarkAttendance(request):
                 return redirect('markattend')
             
         if request.POST.get('signout'):
-            print("i was signout")
             date_signout = now.strftime("%Y-%m-%d")
             time_signout = now.strftime("%H:%M:%S")
-            models.MarkAttendance.objects.filter(staffid=staff).update(date_signout=date_signout,
-                                                              time_signout=time_signout)
-           
+            if  not models.MarkAttendance.objects.filter(staffid=staff).filter(
+                date_signin=date_signin).filter(attendance_day=attendance_day).filter(date_signout=date_signout).exists():
+                print("cond")
+                models.MarkAttendance.objects.filter(staffid=staff).filter(
+                    attendance_day=attendance_day).filter(
+                date_signin=date_signin).update(date_signout=date_signout,time_signout=time_signout)
+                messages.success(request, 'You Signed Out')
+                return redirect('markattend')
+            else:
+                messages.error(request, 'You"ve Signout Already')
+                return redirect('markattend')
+
+            
         
     return render(request, 'info/markattendance.html')
+
+
+def ListAttendance(request):
+    attendance = models.MarkAttendance.objects.all()
+
+    return render(request, 'info/listattendance.html', {"allattendance":attendance})
