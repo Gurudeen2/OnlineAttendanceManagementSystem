@@ -3,6 +3,7 @@ from staff.models import Staff
 from . import models
 from datetime import datetime
 from django.contrib import messages
+from django.db.models import Q
 
 # Create your views here.
 
@@ -47,8 +48,14 @@ def MarkAttendance(request):
         
     return render(request, 'info/markattendance.html')
 
+# def Search(request):
+#     return render(request, )
 
 def ListAttendance(request):
     attendance = models.MarkAttendance.objects.all()
+
+    if request.method == "POST":
+        searchparam = request.POST['search']
+        search = models.MarkAttendance.objects.filter(Q(staffid=searchparam)|Q(status=searchparam))
 
     return render(request, 'info/listattendance.html', {"allattendance":attendance})
