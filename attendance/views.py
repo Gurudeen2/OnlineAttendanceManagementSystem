@@ -4,6 +4,7 @@ from . import models
 from datetime import datetime
 from django.contrib import messages
 from django.db.models import Q
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 
@@ -48,14 +49,25 @@ def MarkAttendance(request):
         
     return render(request, 'info/markattendance.html')
 
-# def Search(request):
-#     return render(request, )
+def IndividualAttendance(request):
+    return render(request, 'info/individualattendance.html')
 
 def ListAttendance(request):
     attendance = models.MarkAttendance.objects.all()
+    searchparam = request.GET.get('search')
+    page = request.GET.get('page', 1)
 
-    if request.method == "POST":
-        searchparam = request.POST['search']
-        search = models.MarkAttendance.objects.filter(Q(staffid=searchparam)|Q(status=searchparam))
+    
+    if searchparam:
+        attendance = models.MarkAttendance.objects.filter(Q(staffid=searchparam)|Q(status=searchparam))
+
+    paginator = Paginator(attendance, 15)
+    try:
+        attendance = paginator.page(page)
+    except PageNotAnInteger:
+        attendance = paginator.page(1)
+    except EmptyPage:
+        attendance = paginator.page(paginator.num_pages)
+    
 
     return render(request, 'info/listattendance.html', {"allattendance":attendance})

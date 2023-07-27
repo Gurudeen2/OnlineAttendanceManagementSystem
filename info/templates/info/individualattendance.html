@@ -10,7 +10,7 @@
     <meta name="author" content="" />
 
     {% extends 'info/base.html' %} {% load static %}
-    <title>Staff Management | List Attendance</title>
+    <title>Staff Management</title>
 
     <!-- Bootstrap core CSS -->
     <link
@@ -71,102 +71,89 @@
     <div class="container py-4">
       {% include 'info/partials/_alert.html' %}
       <!-- Jumbotron Header -->
-      <h3>Attendance List</h3>
+      <h3>Staff Attendance</h3>
       <!-- Page Features -->
-      <form action="{% url 'listattendance' %}">
+      <div class="input-group-text">
+        <input
+          type="radio"
+          aria-label="Radio button for following text input"
+        />
+      </div>
+      <form>
         <div class="row">
-          <div class="col-lg-8 col-md-8 mb-4 text-right"></div>
-          <div class="col-lg-4 col-md-4 mb-4 text-right d-flex">
+          <div class="col-lg-6 col-md-6 mb-4">
+            <label for="formFileMultiple" class="form-label">Staff ID</label>
             <input
+              class="form-control"
               type="text"
-              class="form-control w-70"
-              id="inlineFormInput"
-              name="search"
-              placeholder="Search by StaffID | Status"
+              name="staffid"
+              value=""
+              readonly
             />
-            <div class="pl-2">
-              <button type="submit" class="btn btn-primary">Search</button>
-            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6 mb-4">
+            <label for="formFileMultiple" class="form-label">Fullname</label>
+            <input
+              class="form-control"
+              type="text"
+              name="fullname"
+              value=""
+              readonly
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6 mb-4">
+            <label for="formFileMultiple" class="form-label"
+              >No of Absent</label
+            >
+            <input
+              class="form-control"
+              type="text"
+              name="designation"
+              value=""
+              readonly
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6 mb-4">
+            <label for="formFileMultiple" class="form-label"
+              >No of Present</label
+            >
+            <input
+              class="form-control"
+              type="text"
+              name="designation"
+              value=""
+              readonly
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6 mb-4">
+            <label for="formFileMultiple" class="form-label"
+              >Last Attendance Marked</label
+            >
+            <input
+              class="form-control"
+              type="text"
+              name="designation"
+              value=""
+              readonly
+            />
           </div>
         </div>
       </form>
-      <div class="row">
-        <div class="col-lg-12 col-md-12 mb-4 table-responsive">
-          <table class="table table-hover">
-            <thead class="table-info">
-              <tr>
-                <th scope="col">Staff ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Status</th>
-                <th scope="col">Date Signin</th>
-                <th scope="col">Time Signin</th>
-                <th scope="col">Date Signout</th>
-                <th scope="col">Time Signout</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% if allattendance %} {% for attendance in allattendance %}
-              <tr>
-                <td>{{attendance.staffid}}</td>
-                <td>{{attendance.staffid.fullname}}</td>
-                <td>{{attendance.status}}</td>
-                <td>{{attendance.date_signin}}</td>
-                <td>{{attendance.time_signin}}</td>
-                <td>{{attendance.date_signout}}</td>
-                <td>{{attendance.time_signout}}</td>
-              </tr>
-              {% endfor %} {% else %}
-              <tr>
-                <td>No Record Found</td>
-              </tr>
-              {% endif %}
-            </tbody>
-          </table>
-
-          {% if allattendance.has_other_pages %}
-          <ul class="pagination">
-            {% if allattendance.has_previous %}
-            <li class="page-item">
-              <a
-                class="page-link"
-                href="?page={{ allattendance.previous_page_number }}"
-                tabindex="-1"
-                >Previous</a
-              >
-            </li>
-            {% else %}
-            <li class="page-item disabled">
-              <a class="page-link"  tabindex="-1">Previous</a>
-            </li>
-            {% endif %}
-            {% for i in allattendance.paginator.page_range %} 
-            {% if allattendance.number == i %}
-            <li class="page-item active">
-              <a class="page-link" href="?page={{ i }}"
-                >{{i}} <span class="sr-only">(current)</span></a
-              >
-            </li>
-            {% else %}
-            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
-            {% endif %}
-            {% endfor %} 
-            {% if allattendance.has_next %}
-            
-            <li class="page-item">
-              <a class="page-link" href="?page={{ allattendance.next_page_number }}">Next</a>
-            </li>
-            {% else %}
-             <li class="page-item disabled">
-               <a class="page-link"  tabindex="-1">Next</a>
-            </li>
-            {% endif %}
-          </ul>
-          {% endif %} 
-          
-        </div>
-      </div>
-      <!-- /.row -->
     </div>
+    <!-- /.row -->
+
     <!-- /.container -->
     <!-- Logout Modal-->
     <div
