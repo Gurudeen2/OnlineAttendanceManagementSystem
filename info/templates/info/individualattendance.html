@@ -73,12 +73,25 @@
       <!-- Jumbotron Header -->
       <h3>Staff Attendance</h3>
       <!-- Page Features -->
-      <div class="input-group-text">
-        <input
-          type="radio"
-          aria-label="Radio button for following text input"
-        />
-      </div>
+
+      <form>
+        <div class="form-row">
+          <div class="col-lg-6 col-md-6 mb-4">
+            <label for="inlineFormInput">From Date</label>
+            <input type="date" class="form-control" id="inlineFormInput" />
+          </div>
+          <div class="col-lg-6 col-md-6 mb-4">
+            <label for="inlineFormInputGroup">To Date</label>
+
+            <input type="date" class="form-control" id="inlineFormInputGroup" />
+          </div>
+
+          <div class="col-lg-6 col-md-6 mb-4">
+            <button type="submit" class="btn btn-primary mb-2">Filter</button>
+          </div>
+        </div>
+      </form>
+
       <form>
         <div class="row">
           <div class="col-lg-6 col-md-6 mb-4">
