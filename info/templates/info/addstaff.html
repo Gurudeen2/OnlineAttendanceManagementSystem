@@ -73,100 +73,92 @@
       <!-- Jumbotron Header -->
       <h3>Add Staff</h3>
       <!-- Page Features -->
-        <form method="post">
-      <div class="row">
+      <form method="post">
+        <div class="row">
           {% csrf_token %}
           <div class="col-lg-6 col-md-6 mb-4">
-           
-              <label for="formFileMultiple" class="form-label">Staff ID</label>
-              <input
-                class="form-control"
-                type="text"
-                name="staffid"
-                placeholder="Enter Staff ID"
-                required
-              />
+            <label for="formFileMultiple" class="form-label">Staff ID</label>
+            <input
+              class="form-control"
+              type="text"
+              name="staffid"
+              placeholder="Enter Staff ID"
+              required
+            />
           </div>
-</div>
-      <div class="row">
+        </div>
 
-<div class="col-lg-6 col-md-6 mb-4">
-           
-              <label for="formFileMultiple" class="form-label">Fullname</label>
-              <input
-                class="form-control"
-                type="text"
-                name="fullname"
-                placeholder="Enter Fullname"
-                required
-              />
-          </div>
-</div>
-      <div class="row">
-
+        <div class="row">
           <div class="col-lg-6 col-md-6 mb-4">
-           
-              <label for="formFileMultiple" class="form-label"
-                >Designation</label
-              >
-              <input
-                class="form-control"
-                type="text"
-                name="designation"
-                placeholder="Enter Designation"
-              />
+            <label for="formFileMultiple" class="form-label">Fullname</label>
+            <input
+              class="form-control"
+              type="text"
+              name="fullname"
+              placeholder="Enter Fullname"
+              required
+            />
           </div>
-</div>
-      <div class="row">
+        </div>
 
+        <div class="row">
           <div class="col-lg-6 col-md-6 mb-4">
-            
-              <label for="formFileMultiple" class="form-label">Level</label>
-              <input
-                class="form-control"
-                type="text"
-                name="level"
-                placeholder="Enter Level"
-              />
+            <label for="formFileMultiple" class="form-label">Designation</label>
+            <input
+              class="form-control"
+              type="text"
+              name="designation"
+              placeholder="Enter Designation"
+            />
           </div>
-</div>
-      <div class="row">
+        </div>
 
+        <div class="row">
           <div class="col-lg-6 col-md-6 mb-4">
-              <label for="formFileMultiple" class="form-label">Email</label>
-              <input
-                class="form-control"
-                type="email"
-                name="email"
-                placeholder="Enter Email Address"
-              />
+            <label for="formFileMultiple" class="form-label">Level</label>
+            <input
+              class="form-control"
+              type="text"
+              name="level"
+              placeholder="Enter Level"
+            />
           </div>
-</div>
-      <div class="row">
-
+        </div>
+        <div class="row">
           <div class="col-lg-6 col-md-6 mb-4">
-              <label for="formFileMultiple" class="form-label">Phone Number</label>
-              <input
-                class="form-control"
-                type="text"
-                name="phone"
-                placeholder="Enter Phone Number"
-              />
-            </div>
+            <label for="formFileMultiple" class="form-label">Email</label>
+            <input
+              class="form-control"
+              type="email"
+              name="email"
+              placeholder="Enter Email Address"
+            />
           </div>
-      </div>
-      <div class="row">
+        </div>
 
+        <div class="row">
+          <div class="col-lg-6 col-md-6 mb-4">
+            <label for="formFileMultiple" class="form-label"
+              >Phone Number</label
+            >
+            <input
+              class="form-control"
+              type="text"
+              name="phone"
+              placeholder="Enter Phone Number"
+            />
+          </div>
+        </div>
+
+        <div class="row">
           <div class="col-lg-6 col-md-6 mb-4 text-right">
-           
-              <input type="submit" value="Add" class="btn btn-success" />
-              
+            <input type="submit" value="Add" class="btn btn-success" />
           </div>
-          </div>
-        </form>
-      </div>
-      <!-- /.row -->
+        </div>
+      </form>
     </div>
+    <!-- /.row -->
+
     <!-- /.container -->
     <!-- Logout Modal-->
     <div
