@@ -10,7 +10,7 @@
     <meta name="author" content="" />
 
     {% extends 'info/base.html' %} {% load static %}
-    <title>Staff Management | List Attendance</title>
+    <title>Staff Management | Report</title>
 
     <!-- Bootstrap core CSS -->
     <link
@@ -73,7 +73,7 @@
       <!-- Jumbotron Header -->
       <h3>Attendance List</h3>
       <!-- Page Features -->
-      <form action="{% url 'listattendance' %}">
+      <form action="{% url 'report' %}">
         <div class="row">
           <div class="col-lg-8 col-md-8 mb-4 text-right"></div>
           <div class="col-lg-4 col-md-4 mb-4 text-right d-flex">
@@ -106,7 +106,7 @@
             </thead>
             <tbody>
               {% if allattendance %} {% for attendance in allattendance %}
-              <tr onclick='location.href="{% url 'singlereport' attendance.staffid %}";'>
+              <tr>
                 <td>{{attendance.staffid}}</td>
                 <td>{{attendance.staffid.fullname}}</td>
                 <td>{{attendance.status}}</td>
@@ -136,33 +136,35 @@
             </li>
             {% else %}
             <li class="page-item disabled">
-              <a class="page-link"  tabindex="-1">Previous</a>
+              <a class="page-link" tabindex="-1">Previous</a>
             </li>
-            {% endif %}
-            {% for i in allattendance.paginator.page_range %} 
-            {% if allattendance.number == i %}
+            {% endif %} {% for i in allattendance.paginator.page_range %} {% if
+            allattendance.number == i %}
             <li class="page-item active">
               <a class="page-link" href="?page={{ i }}"
                 >{{i}} <span class="sr-only">(current)</span></a
               >
             </li>
             {% else %}
-            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
-            {% endif %}
-            {% endfor %} 
-            {% if allattendance.has_next %}
-            
             <li class="page-item">
-              <a class="page-link" href="?page={{ allattendance.next_page_number }}">Next</a>
+              <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+            </li>
+            {% endif %} {% endfor %} {% if allattendance.has_next %}
+
+            <li class="page-item">
+              <a
+                class="page-link"
+                href="?page={{ allattendance.next_page_number }}"
+                >Next</a
+              >
             </li>
             {% else %}
-             <li class="page-item disabled">
-               <a class="page-link"  tabindex="-1">Next</a>
+            <li class="page-item disabled">
+              <a class="page-link" tabindex="-1">Next</a>
             </li>
             {% endif %}
           </ul>
-          {% endif %} 
-          
+          {% endif %}
         </div>
       </div>
       <!-- /.row -->
