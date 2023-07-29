@@ -12,12 +12,12 @@ def Reportall(request):
     searchparam = request.GET.get('search')
     page = request.GET.get('page', 1)
 
-    report = models.MarkAttendance.objects.filter(sigin_date__range=["2023-07-25", "2023-07-29"])
+    print("aa",a)
     
     if searchparam:
         report = models.MarkAttendance.objects.filter(Q(staffid=searchparam)|Q(status=searchparam))
 
-    paginator = Paginator(report, 15)
+    paginator = Paginator(report.order_by("staffid"), 15)
     try:
         report = paginator.page(page)
     except PageNotAnInteger:
@@ -25,5 +25,10 @@ def Reportall(request):
     except EmptyPage:
         report = paginator.page(paginator.num_pages)
     
+    datefrom = request.GET.get('fromdate')
+    dateto = request.GET.get('todate')
+    print("dateto", dateto)
+    # if datefrom and dateto:
+    #     report = models.MarkAttendance.objects.filter(date_signin__range=["2023-07-25", "2023-07-26"])
 
     return render(request, 'info/report.html', {"allreport":report})
