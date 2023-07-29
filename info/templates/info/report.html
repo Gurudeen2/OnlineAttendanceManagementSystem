@@ -71,7 +71,7 @@
     <div class="container py-4">
       {% include 'info/partials/_alert.html' %}
       <!-- Jumbotron Header -->
-      <h3>Attendance List</h3>
+      <h3>Report</h3>
       <!-- Page Features -->
       <form action="{% url 'report' %}">
         <div class="row">
@@ -105,15 +105,15 @@
               </tr>
             </thead>
             <tbody>
-              {% if allattendance %} {% for attendance in allattendance %}
+              {% if allreport %} {% for report in allreport %}
               <tr>
-                <td>{{attendance.staffid}}</td>
-                <td>{{attendance.staffid.fullname}}</td>
-                <td>{{attendance.status}}</td>
-                <td>{{attendance.date_signin}}</td>
-                <td>{{attendance.time_signin}}</td>
-                <td>{{attendance.date_signout}}</td>
-                <td>{{attendance.time_signout}}</td>
+                <td>{{report.staffid}}</td>
+                <td>{{report.staffid.fullname}}</td>
+                <td>{{report.status}}</td>
+                <td>{{report.date_signin}}</td>
+                <td>{{report.time_signin}}</td>
+                <td>{{report.date_signout}}</td>
+                <td>{{report.time_signout}}</td>
               </tr>
               {% endfor %} {% else %}
               <tr>
@@ -123,13 +123,13 @@
             </tbody>
           </table>
 
-          {% if allattendance.has_other_pages %}
+          {% if allreport.has_other_pages %}
           <ul class="pagination">
-            {% if allattendance.has_previous %}
+            {% if allreport.has_previous %}
             <li class="page-item">
               <a
                 class="page-link"
-                href="?page={{ allattendance.previous_page_number }}"
+                href="?page={{ allreport.previous_page_number }}"
                 tabindex="-1"
                 >Previous</a
               >
@@ -138,8 +138,8 @@
             <li class="page-item disabled">
               <a class="page-link" tabindex="-1">Previous</a>
             </li>
-            {% endif %} {% for i in allattendance.paginator.page_range %} {% if
-            allattendance.number == i %}
+            {% endif %} {% for i in allreport.paginator.page_range %} 
+            {% if allreport.number == i %}
             <li class="page-item active">
               <a class="page-link" href="?page={{ i }}"
                 >{{i}} <span class="sr-only">(current)</span></a
@@ -149,12 +149,10 @@
             <li class="page-item">
               <a class="page-link" href="?page={{ i }}">{{ i }}</a>
             </li>
-            {% endif %} {% endfor %} {% if allattendance.has_next %}
+            {% endif %} {% endfor %} {% if allreport.has_next %}
 
             <li class="page-item">
-              <a
-                class="page-link"
-                href="?page={{ allattendance.next_page_number }}"
+              <a class="page-link" href="?page={{ allreport.next_page_number }}"
                 >Next</a
               >
             </li>
@@ -168,6 +166,44 @@
         </div>
       </div>
       <!-- /.row -->
+      <!-- <div class="row"> -->
+          <form>
+        <div class="row">
+
+           <div class="col-lg-5 col-md-5 mb-4">
+            <label for="formFileMultiple" class="form-label">From</label>
+            <input
+              class="form-control"
+              type="date"
+              name="fromdate"
+              placeholder="Enter Staff ID"
+              required
+            />
+          </div>
+          <div class="col-lg-5 col-md-5 mb-4">
+            <label for="formFileMultiple" class="form-label">To</label>
+            <input
+              class="form-control"
+              type="date"
+              name="todate"
+              required
+            />
+          </div>
+          <div class="col-lg-2 col-md-2 mb-4">
+             <label for="formFileMultiple" class="form-label"></label>
+            <input class="btn btn-success form-control" type="submit" value="Filter"/>
+          </div>
+        </div>
+          </form>
+
+          <br/>
+          <br/>
+   <div class="text-right">
+   
+          <a class="btn btn-secondary btn-lg">Download PDF</a>
+    
+   </div>
+      </div>
     </div>
     <!-- /.container -->
     <!-- Logout Modal-->
