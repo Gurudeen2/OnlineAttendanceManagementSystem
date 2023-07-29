@@ -106,7 +106,7 @@
             </thead>
             <tbody>
               {% if allattendance %} {% for attendance in allattendance %}
-              <tr>
+              <tr onclick='location.href="{% url 'staffattendance' attendance.staffid %}";'>
                 <td>{{attendance.staffid}}</td>
                 <td>{{attendance.staffid.fullname}}</td>
                 <td>{{attendance.status}}</td>

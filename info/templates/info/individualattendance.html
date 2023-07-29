@@ -91,7 +91,7 @@
           </div>
         </div>
       </form>
-
+    {% if fullname %}
       <form>
         <div class="row">
           <div class="col-lg-6 col-md-6 mb-4">
@@ -100,7 +100,7 @@
               class="form-control"
               type="text"
               name="staffid"
-              value=""
+              value="{{staffid}}"
               readonly
             />
           </div>
@@ -113,7 +113,7 @@
               class="form-control"
               type="text"
               name="fullname"
-              value=""
+              value="{{fullname}}"
               readonly
             />
           </div>
@@ -128,7 +128,7 @@
               class="form-control"
               type="text"
               name="designation"
-              value=""
+              value="{{absentcount}}"
               readonly
             />
           </div>
@@ -142,8 +142,8 @@
             <input
               class="form-control"
               type="text"
-              name="designation"
-              value=""
+              name="noofpresent"
+              value="{{presentcount}}"
               readonly
             />
           </div>
@@ -158,12 +158,15 @@
               class="form-control"
               type="text"
               name="designation"
-              value=""
+              value="{{lastattendance}}"
               readonly
             />
           </div>
         </div>
       </form>
+      {% else %}
+          <p onload='window.location.href="{% url 'index' %}";'></p>
+      {% endif %}
     </div>
     <!-- /.row -->
 

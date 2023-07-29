@@ -49,8 +49,18 @@ def MarkAttendance(request):
         
     return render(request, 'info/markattendance.html')
 
-def IndividualAttendance(request):
-    return render(request, 'info/individualattendance.html')
+def IndividualAttendance(request, param):
+    print("parameter", param)
+    single_view = models.MarkAttendance.objects.filter(staffid=param)
+    fullname = single_view.first().staffid.fullname
+    staffid = param
+    absent_count = single_view.filter(status="Absent").count()
+    present_count = single_view.filter(status="Present").count()
+    lastattendance= single_view.latest('date_signout').date_signin
+    return render(request, 'info/individualattendance.html', {'fullname':fullname, 'staffid':staffid,
+                                                               'absentcount':absent_count,
+                                                                'presentcount':present_count,
+                                                                'lastattendance':lastattendance })
 
 def ListAttendance(request):
     attendance = models.MarkAttendance.objects.all()
