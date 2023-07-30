@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from . import models
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
-
+@login_required
 def Staff(request):
 
     if request.method == "POST":

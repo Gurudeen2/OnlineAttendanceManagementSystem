@@ -5,9 +5,11 @@ from datetime import datetime
 from django.contrib import messages
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
-
+@login_required
 def MarkAttendance(request):
     now = datetime.now()
     if request.method == "POST":
@@ -49,6 +51,7 @@ def MarkAttendance(request):
         
     return render(request, 'info/markattendance.html')
 
+@login_required
 def IndividualAttendance(request, param):
     print("parameter", param)
     single_view = models.MarkAttendance.objects.filter(staffid=param)
@@ -62,6 +65,7 @@ def IndividualAttendance(request, param):
                                                                 'presentcount':present_count,
                                                                 'lastattendance':lastattendance })
 
+@login_required
 def ListAttendance(request):
     attendance = models.MarkAttendance.objects.all()
     searchparam = request.GET.get('search')

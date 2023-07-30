@@ -42,14 +42,12 @@
                 <p class='title'>Invoice # </p>
             </div>
         <div>
-            {% for d in data %}
         <div class='details'>
-            Bill to: {{d.today}} <br/>
+            Bill to: {{data}} <br/>
             Amount:  <br/>
             Date: 
             <hr class='hrItem' />
         </div>
-        {% endfor %}
     </div>
     </body>
 </html>

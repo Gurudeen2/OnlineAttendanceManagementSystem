@@ -7,11 +7,11 @@ from attendance import models
 from django.http import HttpResponse
 from django.views.generic import View
 from django.template.loader import get_template
-
+from django.contrib.auth.decorators import login_required
 from .utils import render_to_pdf #created in step 4
 
 # Create your views here.
-
+@login_required
 def Reportall(request):
     report = models.MarkAttendance.objects.all()
     searchparam = request.GET.get('search')
