@@ -19,8 +19,9 @@ def Staff(request):
             level = request.POST['level']
             email = request.POST['email']
             phone = request.POST['phone']
+            coordinate = request.POST["location"]
             staff = models.Staff.objects.create(staffid=staffid, designation=designation, fullname=fullname,
-                                                level=level, email=email, phone=phone)
+                                                level=level, email=email, phone=phone, coordinate=coordinate)
             staff.save()
             messages.success(request, 'Staff Added Successfully')
             return redirect('staff')

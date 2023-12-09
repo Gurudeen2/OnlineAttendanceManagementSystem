@@ -9,6 +9,7 @@ class Staff(models.Model):
     level = models.CharField(max_length=50, blank=True, null=True)
     email = models.EmailField(max_length=50, blank=True, null=True)
     phone = models.CharField(max_length=12, blank=True, null=True)
+    coordinate = models.CharField(max_length=50, blank=True, null=True)
 
     def __str__(self):
         return self.staffid

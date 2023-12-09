@@ -60,7 +60,7 @@
       <!-- Navbar -->
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link text-capitalize"> {{request.user}} </a>
           </li>
           <li class="nav-item">
@@ -71,7 +71,7 @@
               data-target="#logoutModal"
               >Logout</a
             >
-          </li>
+          </li> -->
         </ul>
       </div>
     </nav>
@@ -84,12 +84,12 @@
         {% else %}
         class="nav-item"
         {% endif %}>
-          <a class="nav-link" href="{% url 'staff' %}">
+          <a class="nav-link" href="{% url 'index' %}">
             <span>Home</span>
           </a>
         </li>
 
-         <li {% if 'staff' in request.path %} 
+         <!-- <li {% if 'staff' in request.path %} 
         class="nav-item active"
         {% else %}
         class="nav-item"
@@ -97,8 +97,8 @@
           <a class="nav-link" href="{% url 'staff' %}">
             <span>Add Staff</span>
           </a>
-        </li>
-       <!-- <li {% if 'markattend' in request.url %} 
+        </li> -->
+       <li {% if 'markattend' in request.url %} 
         class="nav-item active"
         {% else %}
         class="nav-item"
@@ -106,8 +106,8 @@
           <a class="nav-link" href="{% url 'markattend' %}">
             <span>Mark Attendance</span>
           </a>
-        </li> -->
-         <li {% if 'all' in request.path %} 
+        </li>
+         <!-- <li {% if 'all' in request.path %} 
         class="nav-item active"
         {% else %}
         class="nav-item"
@@ -125,7 +125,7 @@
           <a class="nav-link" href="{% url 'report' %}">
             <span>Report</span>
           </a>
-        </li>
+        </li> -->
       </ul>
 
       <div id="content-wrapper">
